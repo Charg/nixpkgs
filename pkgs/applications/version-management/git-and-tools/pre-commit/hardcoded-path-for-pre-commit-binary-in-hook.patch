@@ -1,0 +1,25 @@
+From c5dfe65b117a83c6b5d1bac12ed883c0fc5051aa Mon Sep 17 00:00:00 2001
+From: chris <grkcharge@gmail.com>
+Date: Thu, 11 Jul 2019 13:28:01 -0700
+Subject: [PATCH] Patched hook-tmpl for nix
+
+---
+ pre_commit/resources/hook-tmpl | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/pre_commit/resources/hook-tmpl b/pre_commit/resources/hook-tmpl
+index a145c8e..7524a4c 100755
+--- a/pre_commit/resources/hook-tmpl
++++ b/pre_commit/resources/hook-tmpl
+@@ -110,8 +110,7 @@ def _exe():
+             except OSError:
+                 pass
+ 
+-    if distutils.spawn.find_executable('pre-commit'):
+-        return ('pre-commit', 'run')
++    return ('@pre-commit@/bin/pre-commit', 'run')
+ 
+     raise FatalError(
+         '`pre-commit` not found.  Did you forget to activate your virtualenv?',
+-- 
+2.17.1
